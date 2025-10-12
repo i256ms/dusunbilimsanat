@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etkinliklerimiz - Kulüp Adı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+         <div class="logo-container">
+             <img src="https://placehold.co/150x60/f16821/white?text=Kulüp+Logo" alt="Kulüp Logosu" class="logo">
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Ana Sayfa</a>
+            <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
+            <a href="etkinlikler.html" class="nav-link active">Etkinliklerimiz</a>
+            <a href="galeri.html" class="nav-link">Galeri</a>
+            <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
+            <a href="iletisim.html" class="nav-link">İletişim</a>
+             <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
+        </nav>
+        <div class="logo-container">
+            <img src="https://placehold.co/150x60/cd4545/white?text=Üniversite+Logo" alt="Üniversite Logosu" class="logo">
+        </div>
+    </header>
+
+    <main class="content-container fade-in">
+        <h1>Etkinliklerimiz</h1>
+        <div id="etkinlik-listesi" class="etkinlik-container">
+            <!-- Etkinlikler JavaScript tarafından buraya dinamik olarak eklenecek -->
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 [Kulüp Adı]. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script>
+        // Sayfa yüklendiğinde etkinlikleri JSON dosyasından alıp gösteren fonksiyon
+        document.addEventListener('DOMContentLoaded', function() {
+            const etkinlikListesi = document.getElementById('etkinlik-listesi');
+            
+            // BU BÖLÜMÜ DOLDURUN: GitHub reponuzdaki etkinlikler.json dosyasının "Raw" URL'sini buraya yapıştırın.
+            // Örnek: https://raw.githubusercontent.com/kullanici-adiniz/repo-adiniz/main/data/etkinlikler.json
+            const etkinliklerJsonUrl = 'https://gist.githubusercontent.com/anonymous/5d3c823cb7a4128017a4f890c0a514dd/raw/a30f3a61f5c6e3b5e4a5e1c412e4b1b8694c2635/etkinlikler.json';
+
+            fetch(etkinliklerJsonUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Veri alınamadı. Ağ hatası olabilir.');
+                    }
+                    return response.json();
+                })
+                .then(etkinlikler => {
+                    if (!etkinlikler || etkinlikler.length === 0) {
+                        etkinlikListesi.innerHTML = '<p>Henüz duyurulmuş bir etkinlik bulunmamaktadır.</p>';
+                        return;
+                    }
+
+                    // En yeni etkinliğin en üstte görünmesi için diziyi tersine çeviriyoruz.
+                    etkinlikler.slice().reverse().forEach(etkinlik => {
+                        const etkinlikKarti = document.createElement('div');
+                        etkinlikKarti.classList.add('etkinlik-karti');
+
+                        etkinlikKarti.innerHTML = `
+                            <h2>${etkinlik.baslik}</h2>
+                            <p class="etkinlik-detay">${etkinlik.detay}</p>
+                            <div class="etkinlik-bilgi">
+                                <p><strong>Tarih:</strong> ${new Date(etkinlik.tarih).toLocaleString('tr-TR')}</p>
+                                <p><strong>Mekan:</strong> ${etkinlik.mekan}</p>
+                            </div>
+                            <div class="etkinlik-map">
+                                ${etkinlik.harita}
+                            </div>
+                            <a href="${etkinlik.kayitLinki}" target="_blank" class="buton">Kayıt Ol</a>
+                        `;
+                        etkinlikListesi.appendChild(etkinlikKarti);
+                    });
+                })
+                .catch(error => {
+                    console.error('Etkinlikler yüklenirken hata oluştu:', error);
+                    etkinlikListesi.innerHTML = '<p>Etkinlikler yüklenirken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.</p>';
+                });
+        });
+    </script>
+</body>
+</html>
+
 
