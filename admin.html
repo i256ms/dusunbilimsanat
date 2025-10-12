@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+
+    <div id="login-container" class="admin-form-container">
+        <h1>Admin Girişi</h1>
+        <input type="password" id="password" placeholder="Şifre Giriniz">
+        <button id="login-button" class="buton">Giriş Yap</button>
+        <p id="login-error" class="error-message"></p>
+    </div>
+
+    <div id="admin-panel" class="hidden">
+        <header class="main-header">
+            <div class="logo-container">
+                <img src="https://placehold.co/150x60/f16821/white?text=Kulüp+Logo" alt="Kulüp Logosu" class="logo">
+            </div>
+             <nav class="main-nav">
+                <a href="index.html" class="nav-link">Siteyi Görüntüle</a>
+            </nav>
+            <div class="logo-container">
+                <button id="logout-button" class="buton danger">Çıkış Yap</button>
+            </div>
+        </header>
+        
+        <main class="content-container">
+            <h1>Yönetim Paneli</h1>
+            
+            <!-- Etkinlik Yönetimi Bölümü -->
+            <section class="admin-section">
+                <h2>Etkinlik JSON Üretici</h2>
+                <p>Yeni bir etkinlik eklemek için aşağıdaki formu doldurun. Oluşturulan JSON metnini kopyalayıp GitHub'daki <code>data/etkinlikler.json</code> dosyasındaki listenin içine yeni bir eleman olarak yapıştırın.</p>
+                <form id="etkinlik-formu" class="admin-form">
+                    <input type="text" id="etkinlik-baslik" placeholder="Etkinlik Başlığı" required>
+                    <textarea id="etkinlik-detay" placeholder="Etkinlik Detay Metni" rows="5" required></textarea>
+                    <input type="datetime-local" id="etkinlik-tarih" required>
+                    <input type="text" id="etkinlik-mekan" placeholder="Mekan İsmi (Örn: Sürekli Eğitim Merkezi)" required>
+                    <textarea id="etkinlik-harita" placeholder="Google Harita Gömme (embed) Kodu" rows="3" required></textarea>
+                    <input type="url" id="etkinlik-kayit-linki" placeholder="Kayıt Formu Linki" required>
+                    <button type="submit" class="buton">Etkinlik JSON'u Oluştur</button>
+                </form>
+                <h3>Oluşturulan JSON (Kopyalamak için):</h3>
+                <textarea id="etkinlik-json-cikti" rows="12" readonly placeholder="Etkinlik bilgileri girildiğinde JSON metni burada görünecektir..."></textarea>
+            </section>
+            
+            <!-- Galeri Yönetimi Bölümü -->
+            <section class="admin-section">
+                <h2>Galeri JSON Üretici</h2>
+                <p>Yeni bir görsel eklemeden önce, görseli GitHub reponuzdaki bir klasöre (örn: <code>images/galeri/</code>) yükleyin. Ardından aşağıdaki formu doldurun. Oluşturulan JSON metnini kopyalayıp <code>data/galeri.json</code> dosyasındaki listenin içine yeni bir eleman olarak yapıştırın.</p>
+                <form id="galeri-formu" class="admin-form">
+                    <input type="text" id="galeri-resim-url" placeholder="GitHub'a yüklenen resmin tam yolu" required>
+                    <input type="text" id="galeri-aciklama" placeholder="Resim için kısa açıklama" required>
+                    <button type="submit" class="buton">Galeri JSON'u Oluştur</button>
+                </form>
+                <h3>Oluşturulan JSON (Kopyalamak için):</h3>
+                <textarea id="galeri-json-cikti" rows="7" readonly placeholder="Galeri bilgileri girildiğinde JSON metni burada görünecektir..."></textarea>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
+
 
