@@ -1,1 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Kulüp Adı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+         <div class="logo-container">
+             <img src="https://placehold.co/150x60/f16821/white?text=Kulüp+Logo" alt="Kulüp Logosu" class="logo">
+        </div>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Ana Sayfa</a>
+            <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
+            <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
+            <a href="galeri.html" class="nav-link active">Galeri</a>
+            <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
+            <a href="iletisim.html" class="nav-link">İletişim</a>
+             <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
+        </nav>
+        <div class="logo-container">
+            <img src="https://placehold.co/150x60/cd4545/white?text=Üniversite+Logo" alt="Üniversite Logosu" class="logo">
+        </div>
+    </header>
+
+    <main class="content-container fade-in">
+        <h1>Galeri</h1>
+        <div id="galeri-container" class="galeri-grid">
+            <!-- Galeri görselleri JavaScript tarafından buraya dinamik olarak eklenecek -->
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 [Kulüp Adı]. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const galeriContainer = document.getElementById('galeri-container');
+            
+            // BU BÖLÜMÜ DOLDURUN: GitHub reponuzdaki galeri.json dosyasının "Raw" URL'sini buraya yapıştırın.
+            const galeriJsonUrl = 'https://gist.githubusercontent.com/anonymous/e89201991873a7f433b5c1c8c8d8b628/raw/37963d3f9b2c3a516ba67e641712a67329f62002/galeri.json';
+
+            fetch(galeriJsonUrl)
+                .then(response => {
+                     if (!response.ok) {
+                        throw new Error('Veri alınamadı. Ağ hatası olabilir.');
+                    }
+                    return response.json();
+                })
+                .then(galeriOgeleri => {
+                    if (!galeriOgeleri || galeriOgeleri.length === 0) {
+                        galeriContainer.innerHTML = '<p>Galeride henüz hiç görsel bulunmamaktadır.</p>';
+                        return;
+                    }
+
+                    galeriOgeleri.slice().reverse().forEach(oge => {
+                        const galeriKarti = document.createElement('div');
+                        galeriKarti.classList.add('galeri-karti');
+                        // resimUrl, JSON dosyasındaki resmin yolunu içerir.
+                        galeriKarti.innerHTML = `
+                            <img src="${oge.resimUrl}" alt="${oge.aciklama}">
+                            <p>${oge.aciklama}</p>
+                        `;
+                        galeriContainer.appendChild(galeriKarti);
+                    });
+                })
+                .catch(error => {
+                    console.error('Galeri yüklenirken hata oluştu:', error);
+                    galeriContainer.innerHTML = '<p>Galeri yüklenirken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.</p>';
+                });
+        });
+    </script>
+
+</body>
+</html>
+
 
