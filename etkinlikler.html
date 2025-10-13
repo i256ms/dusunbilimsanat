@@ -9,7 +9,8 @@
 <body>
     <header class="main-header">
          <div class="logo-container">
-             <img src="https://placehold.co/150x60/f16821/white?text=Kulüp+Logo" alt="Kulüp Logosu" class="logo">
+             <!-- LOGO LİNKİ GÜNCELLENDİ -->
+             <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
         </div>
         <nav class="main-nav">
             <a href="index.html" class="nav-link">Ana Sayfa</a>
@@ -21,6 +22,7 @@
              <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
         </nav>
         <div class="logo-container">
+            <!-- Üniversite logonuzun "raw" linkini buraya ekleyebilirsiniz -->
             <img src="https://placehold.co/150x60/cd4545/white?text=Üniversite+Logo" alt="Üniversite Logosu" class="logo">
         </div>
     </header>
@@ -37,11 +39,10 @@
     </footer>
 
     <script>
-        // Sayfa yüklendiğinde etkinlikleri JSON dosyasından alıp gösteren fonksiyon
         document.addEventListener('DOMContentLoaded', function() {
             const etkinlikListesi = document.getElementById('etkinlik-listesi');
             
-            // etkinlik json raw gelcek yer
+            // Bu link doğru, bir değişiklik yapmadık.
             const etkinliklerJsonUrl = 'https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/data/etkinlikler.json';
 
             fetch(etkinliklerJsonUrl)
@@ -57,7 +58,6 @@
                         return;
                     }
 
-                    // En yeni etkinliğin en üstte görünmesi için diziyi tersine çeviriyoruz.
                     etkinlikler.slice().reverse().forEach(etkinlik => {
                         const etkinlikKarti = document.createElement('div');
                         etkinlikKarti.classList.add('etkinlik-karti');
@@ -66,7 +66,7 @@
                             <h2>${etkinlik.baslik}</h2>
                             <p class="etkinlik-detay">${etkinlik.detay}</p>
                             <div class="etkinlik-bilgi">
-                                <p><strong>Tarih:</strong> ${new Date(etkinlik.tarih).toLocaleString('tr-TR')}</p>
+                                <p><strong>Tarih:</strong> ${new Date(etkinlik.tarih).toLocaleString('tr-TR', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                                 <p><strong>Mekan:</strong> ${etkinlik.mekan}</p>
                             </div>
                             <div class="etkinlik-map">
@@ -85,5 +85,4 @@
     </script>
 </body>
 </html>
-
 
