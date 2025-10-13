@@ -3,79 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri - Kulüp Adı</title>
+    <title>Galeri - Düşün Bilim Sanat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="main-header">
-         <div class="logo-container">
-             <!-- LOGO LİNKİ DE DOĞRU LİNKLERLE GÜNCELLENDİ -->
-             <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
-        </div>
-        <nav class="main-nav">
-            <a href="index.html" class="nav-link">Ana Sayfa</a>
-            <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
-            <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
-            <a href="galeri.html" class="nav-link active">Galeri</a>
-            <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
-            <a href="iletisim.html" class="nav-link">İletişim</a>
-             <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
-        </nav>
         <div class="logo-container">
-            <!-- Üniversite logonuzun "raw" linkini buraya ekleyebilirsiniz -->
-            <img src="https://placehold.co/150x60/cd4545/white?text=Üniversite+Logo" alt="Üniversite Logosu" class="logo">
-        </div>
-    </header>
+           <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
+       </div>
+       <nav class="main-nav">
+           <a href="index.html" class="nav-link">Ana Sayfa</a>
+           <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
+           <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
+           <a href="galeri.html" class="nav-link active">Galeri</a>
+           <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
+           <a href="iletisim.html" class="nav-link">İletişim</a>
+           <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
+       </nav>
+       <div class="logo-container">
+           <img src="https://i.ibb.co/9g0gJ5N/deulogo.png" alt="Üniversite Logosu" class="logo">
+       </div>
+   </header>
 
     <main class="content-container fade-in">
         <h1>Galeri</h1>
         <div id="galeri-container" class="galeri-grid">
-            <!-- Galeri görselleri JavaScript tarafından buraya dinamik olarak eklenecek -->
+            <!-- Galeri görselleri JavaScript tarafından buraya eklenecek -->
         </div>
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2025. Tüm Hakları Saklıdır.</p>
+        <p>&copy; 2025 Düşün Bilim Sanat. Tüm Hakları Saklıdır.</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const galeriContainer = document.getElementById('galeri-container');
-            
-            // KULLANICI ADINDAKİ HARF HATASI DÜZELTİLDİ
-            const galeriJsonUrl = 'https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/data/galeri.json';
+    document.addEventListener('DOMContentLoaded', () => {
+        const galeriContainer = document.getElementById('galeri-container');
+        const galeriJsonUrl = 'https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/data/galeri.json';
 
-            fetch(galeriJsonUrl)
-                .then(response => {
-                     if (!response.ok) { 
-                        console.error('Ağ yanıtı sorunlu:', response.status, response.statusText);
-                        throw new Error('Veri alınamadı. URL veya ağ bağlantınızı kontrol edin.'); 
-                     }
-                    return response.json();
-                })
-                .then(galeriOgeleri => {
-                    if (!galeriOgeleri || galeriOgeleri.length === 0) {
-                        galeriContainer.innerHTML = '<p>Galeride henüz hiç görsel bulunmamaktadır.</p>';
-                        return;
-                    }
-
-                    galeriOgeleri.slice().reverse().forEach(oge => {
-                        const galeriKarti = document.createElement('div');
-                        galeriKarti.classList.add('galeri-karti');
-                        galeriKarti.innerHTML = `
-                            <img src="${oge.resimUrl}" alt="${oge.aciklama}" onerror="this.src='https.placehold.co/600x400?text=Resim+Yüklenemedi'">
-                            <p>${oge.aciklama}</p>
-                        `;
-                        galeriContainer.appendChild(galeriKarti);
-                    });
-                })
-                .catch(error => {
-                    console.error('Galeri yüklenirken hata oluştu:', error);
-                    galeriContainer.innerHTML = '<p>Galeri yüklenirken bir sorun oluştu. Lütfen geliştirici konsolunu kontrol edin.</p>';
+        fetch(galeriJsonUrl)
+            .then(response => {
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return response.json();
+            })
+            .then(galeriOgeleri => {
+                 if (!galeriOgeleri || galeriOgeleri.length === 0) {
+                    galeriContainer.innerHTML = '<p>Galeride henüz görsel bulunmamaktadır.</p>';
+                    return;
+                }
+                galeriContainer.innerHTML = ''; // Temizle
+                galeriOgeleri.slice().reverse().forEach(oge => {
+                    const kart = document.createElement('div');
+                    kart.className = 'galeri-karti';
+                    kart.innerHTML = `
+                        <img src="${oge.resimUrl}" alt="${oge.aciklama}">
+                        <p>${oge.aciklama}</p>
+                    `;
+                    galeriContainer.appendChild(kart);
                 });
-        });
+            })
+            .catch(error => {
+                console.error('Galeri yüklenirken hata:', error);
+                galeriContainer.innerHTML = '<p>Galeri yüklenirken bir sorun oluştu.</p>';
+            });
+    });
     </script>
-
 </body>
 </html>
 
