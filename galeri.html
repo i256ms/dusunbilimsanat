@@ -9,7 +9,8 @@
 <body>
     <header class="main-header">
          <div class="logo-container">
-             <img src="https://placehold.co/150x60/f16821/white?text=Kulüp+Logo" alt="Kulüp Logosu" class="logo">
+             <!-- LOGO LİNKİ DE DOĞRU LİNKLERLE GÜNCELLENDİ -->
+             <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
         </div>
         <nav class="main-nav">
             <a href="index.html" class="nav-link">Ana Sayfa</a>
@@ -21,6 +22,7 @@
              <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
         </nav>
         <div class="logo-container">
+            <!-- Üniversite logonuzun "raw" linkini buraya ekleyebilirsiniz -->
             <img src="https://placehold.co/150x60/cd4545/white?text=Üniversite+Logo" alt="Üniversite Logosu" class="logo">
         </div>
     </header>
@@ -40,14 +42,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             const galeriContainer = document.getElementById('galeri-container');
             
-            // BU BÖLÜMÜ DOLDURUN: GitHub reponuzdaki galeri.json dosyasının "Raw" URL'sini buraya yapıştırın.
+            // KULLANICI ADINDAKİ HARF HATASI DÜZELTİLDİ
             const galeriJsonUrl = 'https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/data/galeri.json';
 
             fetch(galeriJsonUrl)
                 .then(response => {
-                     if (!response.ok) {
-                        throw new Error('Veri alınamadı. Ağ hatası olabilir.');
-                    }
+                     if (!response.ok) { 
+                        console.error('Ağ yanıtı sorunlu:', response.status, response.statusText);
+                        throw new Error('Veri alınamadı. URL veya ağ bağlantınızı kontrol edin.'); 
+                     }
                     return response.json();
                 })
                 .then(galeriOgeleri => {
@@ -59,9 +62,8 @@
                     galeriOgeleri.slice().reverse().forEach(oge => {
                         const galeriKarti = document.createElement('div');
                         galeriKarti.classList.add('galeri-karti');
-                        // resimUrl, JSON dosyasındaki resmin yolunu içerir.
                         galeriKarti.innerHTML = `
-                            <img src="${oge.resimUrl}" alt="${oge.aciklama}">
+                            <img src="${oge.resimUrl}" alt="${oge.aciklama}" onerror="this.src='https.placehold.co/600x400?text=Resim+Yüklenemedi'">
                             <p>${oge.aciklama}</p>
                         `;
                         galeriContainer.appendChild(galeriKarti);
@@ -69,12 +71,11 @@
                 })
                 .catch(error => {
                     console.error('Galeri yüklenirken hata oluştu:', error);
-                    galeriContainer.innerHTML = '<p>Galeri yüklenirken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.</p>';
+                    galeriContainer.innerHTML = '<p>Galeri yüklenirken bir sorun oluştu. Lütfen geliştirici konsolunu kontrol edin.</p>';
                 });
         });
     </script>
 
 </body>
 </html>
-
 
