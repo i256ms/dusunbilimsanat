@@ -154,14 +154,40 @@ footer.main-footer {
 /* SAYFA ÖZEL STİLLERİ */
 /* ============================================= */
 
-/* ANA SAYFA */
-.hizli-erisim h3 a {
+/* ANA SAYFA - HIZLI ERİŞİM KUTUCUKLARI */
+.hizli-erisim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.hizli-erisim-karti {
+    display: block;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 5px solid var(--third-color);
+}
+
+.hizli-erisim-karti:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    border-left-color: var(--second-color);
+}
+
+.hizli-erisim-karti h3 {
+    margin-top: 0;
     color: var(--first-color);
 }
-.hizli-erisim p {
-    margin-top: 0.5rem;
+
+.hizli-erisim-karti p {
+    margin-bottom: 0;
 }
+
 
 /* ETKİNLİKLER */
 .etkinlik-container { display: grid; gap: 2.5rem; }
