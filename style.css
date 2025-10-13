@@ -18,6 +18,13 @@ body {
     line-height: 1.6;
     background-color: var(--bg-color);
     color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
 }
 
 /* Header & Navigasyon */
@@ -31,6 +38,8 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .logo-container {
@@ -98,6 +107,9 @@ body {
     margin: 2rem auto;
     padding: 2rem;
     background-color: var(--bg-color);
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .fade-in {
@@ -132,10 +144,26 @@ body {
 .main-footer {
     text-align: center;
     padding: 2rem;
-    margin-top: 2rem;
     background-color: var(--light-gray);
     color: #666;
+    width: 100%;
+    box-sizing: border-box;
 }
+
+/* ============================================= */
+/* ANA SAYFA (index.html) */
+/* ============================================= */
+.hizli-erisim {
+    margin-top: 3rem;
+}
+.hizli-erisim h3 a {
+    text-decoration: none;
+    color: var(--first-color);
+}
+.hizli-erisim p {
+    margin-top: 0.5rem;
+}
+
 
 /* ============================================= */
 /* ETKİNLİKLER SAYFASI (etkinlikler.html) */
@@ -312,6 +340,7 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 5px;
     font-size: 1rem;
+    box-sizing: border-box;
 }
 
 .json-generator {
