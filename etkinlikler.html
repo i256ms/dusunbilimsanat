@@ -41,9 +41,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const etkinlikListesi = document.getElementById('etkinlik-listesi');
             
-            // BU BÖLÜMÜ DOLDURUN: GitHub reponuzdaki etkinlikler.json dosyasının "Raw" URL'sini buraya yapıştırın.
-            // Örnek: https://raw.githubusercontent.com/kullanici-adiniz/repo-adiniz/main/data/etkinlikler.json
-            const etkinliklerJsonUrl = 'https://gist.githubusercontent.com/anonymous/5d3c823cb7a4128017a4f890c0a514dd/raw/a30f3a61f5c6e3b5e4a5e1c412e4b1b8694c2635/etkinlikler.json';
+            // etkinlik json raw gelcek yer
+            const etkinliklerJsonUrl = 'https://github.com/i256ms/dusunbilimsanat/raw/refs/heads/main/data/etkinlikler.json';
 
             fetch(etkinliklerJsonUrl)
                 .then(response => {
