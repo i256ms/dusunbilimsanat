@@ -156,6 +156,9 @@ h1, h2, h3 {
 .hizli-erisim {
     margin-top: 3rem;
 }
+.hizli-erisim h2 {
+    text-align: left;
+}
 .hizli-erisim h3 a {
     text-decoration: none;
     color: var(--first-color);
