@@ -28,7 +28,7 @@ h1, h2, h3 {
 }
 
 /* Header & Navigasyon */
-.main-header {
+header.main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +53,7 @@ h1, h2, h3 {
     width: auto;
 }
 
-.main-nav {
+nav.main-nav {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
@@ -102,7 +102,7 @@ h1, h2, h3 {
 }
 
 /* Ana İçerik Alanı */
-.content-container {
+main.content-container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
@@ -141,7 +141,7 @@ h1, h2, h3 {
 }
 
 /* Footer */
-.main-footer {
+footer.main-footer {
     text-align: center;
     padding: 2rem;
     background-color: var(--light-gray);
@@ -151,14 +151,10 @@ h1, h2, h3 {
 }
 
 /* ============================================= */
-/* ANA SAYFA (index.html) */
+/* SAYFA ÖZEL STİLLERİ */
 /* ============================================= */
-.hizli-erisim {
-    margin-top: 3rem;
-}
-.hizli-erisim h2 {
-    text-align: left;
-}
+
+/* ANA SAYFA */
 .hizli-erisim h3 a {
     text-decoration: none;
     color: var(--first-color);
@@ -167,194 +163,36 @@ h1, h2, h3 {
     margin-top: 0.5rem;
 }
 
+/* ETKİNLİKLER */
+.etkinlik-container { display: grid; gap: 2.5rem; }
+.etkinlik-karti { background-color: #fff; border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+.etkinlik-resim { width: 100%; height: 300px; object-fit: cover; }
+.etkinlik-icerik { padding: 1.5rem; }
+.etkinlik-karti h2 { margin-top: 0; color: var(--first-color); }
+.etkinlik-detaylar { max-height: 0; overflow: hidden; transition: max-height 0.7s ease-in-out; }
+.etkinlik-karti.expanded .etkinlik-detaylar { max-height: 1200px; }
+.etkinlik-bilgi { margin: 1rem 0; padding: 1rem; background-color: var(--light-gray); border-left: 4px solid var(--third-color); border-radius: 4px; }
+.etkinlik-map iframe { width: 100%; height: 350px; border-radius: 5px; margin-top: 1rem; }
+.toggle-detay-btn { background: none; border: none; color: var(--second-color); font-weight: bold; cursor: pointer; padding: 0.5rem 0; margin-top: 1rem; font-size: 1rem; }
 
-/* ============================================= */
-/* ETKİNLİKLER SAYFASI (etkinlikler.html) */
-/* ============================================= */
-.etkinlik-container {
-    display: grid;
-    gap: 2.5rem;
-}
+/* GALERİ */
+.galeri-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+.galeri-karti { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); position: relative; }
+.galeri-karti img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.galeri-karti p { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: white; padding: 1rem; margin: 0; transform: translateY(100%); transition: transform 0.3s ease-in-out; }
+.galeri-karti:hover p { transform: translateY(0); }
 
-.etkinlik-karti {
-    background-color: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transition: box-shadow 0.3s;
-}
+/* İLETİŞİM */
+.iletisim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+.yonetici-karti { text-align: center; padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; }
+.yonetici-karti img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--third-color); }
+.yonetici-karti .unvan { color: #666; font-style: italic; }
+.toplu-mail { text-align: center; }
 
-.etkinlik-karti:hover {
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-}
-
-.etkinlik-resim {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-.etkinlik-icerik {
-    padding: 1.5rem;
-}
-
-.etkinlik-karti h2 {
-    margin-top: 0;
-    color: var(--first-color);
-}
-
-.etkinlik-detaylar {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.7s ease-in-out;
-}
-
-.etkinlik-karti.expanded .etkinlik-detaylar {
-    max-height: 1200px; /* İçeriğin sığacağı kadar büyük bir değer */
-}
-
-.etkinlik-bilgi {
-    margin: 1rem 0;
-    padding: 1rem;
-    background-color: var(--light-gray);
-    border-left: 4px solid var(--third-color);
-    border-radius: 4px;
-}
-.etkinlik-bilgi p {
-    margin: 0.5rem 0;
-}
-
-.etkinlik-map iframe {
-    width: 100%;
-    height: 350px;
-    border-radius: 5px;
-    margin-top: 1rem;
-}
-
-.toggle-detay-btn {
-    background: none;
-    border: none;
-    color: var(--second-color);
-    font-weight: bold;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    margin-top: 1rem;
-    font-size: 1rem;
-}
-
-/* ============================================= */
-/* GALERİ SAYFASI (galeri.html) */
-/* ============================================= */
-.galeri-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.galeri-karti {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    position: relative;
-}
-
-.galeri-karti img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.galeri-karti p {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 1rem;
-    margin: 0;
-    transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
-}
-.galeri-karti:hover p {
-    transform: translateY(0);
-}
-
-/* ============================================= */
-/* İLETİŞİM SAYFASI (iletisim.html) */
-/* ============================================= */
-.iletisim-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.yonetici-karti {
-    text-align: center;
-    padding: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-}
-
-.yonetici-karti img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border: 3px solid var(--third-color);
-}
-
-.yonetici-karti h3 {
-    margin: 0.5rem 0;
-    color: var(--first-color);
-}
-
-.yonetici-karti .unvan {
-    color: #666;
-    font-style: italic;
-}
-
-.toplu-mail {
-    text-align: center;
-}
-
-/* ============================================= */
-/* ADMIN PANELİ SAYFASI (admin.html) */
-/* ============================================= */
-.form-grup {
-    margin-bottom: 1.5rem;
-}
-.form-grup label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-.form-grup input[type="text"],
-.form-grup input[type="url"],
-.form-grup input[type="password"],
-.form-grup input[type="datetime-local"],
-.form-grup textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    font-size: 1rem;
-    box-sizing: border-box;
-}
-
-.json-generator {
-    padding: 2rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    margin-bottom: 2rem;
-}
-
-.error-mesaj {
-    color: red;
-    margin-top: 1rem;
-}
+/* ADMIN */
+.form-grup { margin-bottom: 1.5rem; }
+.form-grup label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.form-grup input, .form-grup textarea { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem; box-sizing: border-box; }
+.json-generator { padding: 2rem; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 2rem; }
+.error-mesaj { color: red; margin-top: 1rem; }
 
