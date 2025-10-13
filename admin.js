@@ -1,79 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loginContainer = document.getElementById('login-container');
-    const adminPanel = document.getElementById('admin-panel');
-    const loginButton = document.getElementById('login-button');
+    const loginSection = document.getElementById('login-section');
+    const adminIcerik = document.getElementById('admin-icerik');
+    const loginBtn = document.getElementById('login-btn');
     const passwordInput = document.getElementById('password');
     const loginError = document.getElementById('login-error');
-    const logoutButton = document.getElementById('logout-button');
 
-    // Şifre
-    const ADMIN_SIFRESI = 'DBS35-admin';
+    const DOGRU_SIFRE = "DBS35-admin-fenerbahçe";
 
-    // Oturum kontrolü
-    if (sessionStorage.getItem('isAdmin') === 'true') {
-        showAdminPanel();
-    }
-
-    // Giriş
-    loginButton.addEventListener('click', () => {
-        if (passwordInput.value === ADMIN_SIFRESI) {
-            sessionStorage.setItem('isAdmin', 'true');
-            showAdminPanel();
+    // Giriş yapma işlemi
+    loginBtn.addEventListener('click', () => {
+        if (passwordInput.value === DOGRU_SIFRE) {
+            loginSection.style.display = 'none';
+            adminIcerik.style.display = 'block';
         } else {
-            loginError.textContent = 'Hatalı şifre!';
+            loginError.style.display = 'block';
         }
     });
     
-    // Çıkış
-    logoutButton.addEventListener('click', () => {
-        sessionStorage.removeItem('isAdmin');
-        loginContainer.classList.remove('hidden');
-        adminPanel.classList.add('hidden');
-        passwordInput.value = '';
+    passwordInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            loginBtn.click();
+        }
     });
 
-    function showAdminPanel() {
-        loginContainer.classList.add('hidden');
-        adminPanel.classList.remove('hidden');
-    }
-
-    // --- ETKİNLİK JSON ÜRETİCİ ---
-    const etkinlikFormu = document.getElementById('etkinlik-formu');
-    const etkinlikJsonCikti = document.getElementById('etkinlik-json-cikti');
-    
-    etkinlikFormu.addEventListener('submit', (e) => {
-        e.preventDefault();
+    // Etkinlik JSON Üretici
+    const etkinlikUretBtn = document.getElementById('etkinlik-uret-btn');
+    etkinlikUretBtn.addEventListener('click', () => {
         const etkinlik = {
             id: Date.now(),
             baslik: document.getElementById('etkinlik-baslik').value,
             detay: document.getElementById('etkinlik-detay').value,
+            resimUrl: document.getElementById('etkinlik-resim').value,
             tarih: document.getElementById('etkinlik-tarih').value,
             mekan: document.getElementById('etkinlik-mekan').value,
             harita: document.getElementById('etkinlik-harita').value,
-            kayitLinki: document.getElementById('etkinlik-kayit-linki').value,
+            kayitLinki: document.getElementById('etkinlik-kayit').value,
         };
-        // JSON'u formatlayarak textarea'ya yazdırıyoruz.
-        etkinlikJsonCikti.value = JSON.stringify(etkinlik, null, 2) + ','; // Sonuna virgül ekleyerek kopyalamayı kolaylaştırıyoruz.
-        etkinlikJsonCikti.select(); // Kopyalama kolaylığı için metni seçili hale getir.
-        alert('Etkinlik JSON\'u oluşturuldu! Aşağıdaki metin kutusundan kopyalayabilirsiniz.');
+        const sonucJSON = JSON.stringify(etkinlik, null, 2); // 2-space indentation
+        document.getElementById('etkinlik-sonuc').value = `,\n${sonucJSON}`;
     });
 
-
-    // --- GALERİ JSON ÜRETİCİ ---
-    const galeriFormu = document.getElementById('galeri-formu');
-    const galeriJsonCikti = document.getElementById('galeri-json-cikti');
-
-    galeriFormu.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const oge = {
+    // Galeri JSON Üretici
+    const galeriUretBtn = document.getElementById('galeri-uret-btn');
+    galeriUretBtn.addEventListener('click', () => {
+        const galeriOgesi = {
             id: Date.now(),
-            resimUrl: document.getElementById('galeri-resim-url').value,
-            aciklama: document.getElementById('galeri-aciklama').value
+            resimUrl: document.getElementById('galeri-resim').value,
+            aciklama: document.getElementById('galeri-aciklama').value,
         };
-        
-        galeriJsonCikti.value = JSON.stringify(oge, null, 2) + ',';
-        galeriJsonCikti.select();
-        alert('Galeri JSON\'u oluşturuldu! Aşağıdaki metin kutusundan kopyalayabilirsiniz.');
+        const sonucJSON = JSON.stringify(galeriOgesi, null, 2);
+        document.getElementById('galeri-sonuc').value = `,\n${sonucJSON}`;
     });
 });
 
