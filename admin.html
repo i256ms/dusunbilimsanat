@@ -9,118 +9,60 @@
 <body>
     <header class="main-header">
         <div class="logo-container">
-            <a href="index.html"><img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo"></a>
+            <a href="index.html" style="line-height: 0;">
+                <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
+            </a>
         </div>
         <nav class="main-nav">
-            <a href="index.html" class="nav-link">Siteyi Görüntüle</a>
+             <h1>Admin Paneli</h1>
         </nav>
-        <div class="logo-container"></div>
+        <div class="logo-container">
+             <a href="index.html" class="buton">Siteyi Görüntüle</a>
+        </div>
     </header>
 
-    <main id="admin-container" class="content-container fade-in">
-        <!-- Giriş Ekranı -->
-        <div id="login-screen">
+    <main class="content-container fade-in">
+        <section id="login-section">
             <h2>Yönetici Girişi</h2>
-            <form id="login-form">
-                <div class="form-grup">
-                    <label for="password">Şifre:</label>
-                    <input type="password" id="password" required>
-                </div>
-                <button type="submit" class="buton">Giriş Yap</button>
-            </form>
-            <p id="login-error" class="error-mesaj"></p>
-        </div>
+            <div class="form-grup">
+                <label for="password">Şifre:</label>
+                <input type="password" id="password" placeholder="Şifrenizi girin">
+            </div>
+            <button id="login-btn" class="buton">Giriş Yap</button>
+            <p id="login-error" class="error-mesaj" style="display: none;">Hatalı şifre!</p>
+        </section>
 
-        <!-- Yönetim Paneli (Giriş yapınca görünecek) -->
-        <div id="dashboard" style="display: none;">
-            <h1>Yönetim Paneli</h1>
-            <p>Bu panel, `etkinlikler.json` ve `galeri.json` dosyalarını güncellemek için gereken kod parçacıklarını oluşturmanıza yardımcı olur. Oluşturulan metni kopyalayıp ilgili dosyaya GitHub üzerinden yapıştırmanız gerekmektedir.</p>
-            
+        <section id="admin-icerik" style="display: none;">
+            <!-- Etkinlik JSON Üretici -->
             <div class="json-generator">
                 <h2>Etkinlik JSON Üretici</h2>
-                <form id="etkinlik-form">
-                    <div class="form-grup">
-                        <label for="etkinlik-baslik">Etkinlik Başlığı:</label>
-                        <input type="text" id="etkinlik-baslik" required>
-                    </div>
-                    <!-- YENİ ALAN -->
-                    <div class="form-grup">
-                        <label for="etkinlik-resim">Etkinlik Görseli URL'si:</label>
-                        <input type="url" id="etkinlik-resim" placeholder="https://i.ibb.co/resim.jpg" required>
-                    </div>
-                    <div class="form-grup">
-                        <label for="etkinlik-detay">Etkinlik Detay Metni:</label>
-                        <textarea id="etkinlik-detay" rows="5" required></textarea>
-                    </div>
-                    <div class="form-grup">
-                        <label for="etkinlik-tarih">Tarih ve Saat:</label>
-                        <input type="datetime-local" id="etkinlik-tarih" required>
-                    </div>
-                    <div class="form-grup">
-                        <label for="etkinlik-mekan">Mekan Adı:</label>
-                        <input type="text" id="etkinlik-mekan" required>
-                    </div>
-                    <div class="form-grup">
-                        <label for="etkinlik-harita">Harita Gömme Kodu (Embed):</label>
-                        <textarea id="etkinlik-harita" rows="3" required></textarea>
-                    </div>
-                    <div class="form-grup">
-                        <label for="etkinlik-kayit">Kayıt Formu Linki:</label>
-                        <input type="url" id="etkinlik-kayit" required>
-                    </div>
-                    <button type="submit" class="buton">JSON Üret</button>
-                </form>
+                <div class="form-grup"><label for="etkinlik-baslik">Etkinlik Başlığı:</label><input type="text" id="etkinlik-baslik"></div>
+                <div class="form-grup"><label for="etkinlik-detay">Etkinlik Detay Metni (Paragraflar için Enter kullanın):</label><textarea id="etkinlik-detay" rows="5"></textarea></div>
+                <div class="form-grup"><label for="etkinlik-resim">Etkinlik Görseli URL'si:</label><input type="url" id="etkinlik-resim" placeholder="https://i.ibb.co/resim.png"></div>
+                <div class="form-grup"><label for="etkinlik-tarih">Tarih ve Saat:</label><input type="datetime-local" id="etkinlik-tarih"></div>
+                <div class="form-grup"><label for="etkinlik-mekan">Mekan İsmi:</label><input type="text" id="etkinlik-mekan"></div>
+                <div class="form-grup"><label for="etkinlik-harita">Harita Gömme Kodu (embed):</label><textarea id="etkinlik-harita" rows="3"></textarea></div>
+                <div class="form-grup"><label for="etkinlik-kayit">Kayıt Formu Linki:</label><input type="url" id="etkinlik-kayit"></div>
+                <button id="etkinlik-uret-btn" class="buton">Etkinlik JSON Üret</button>
+                <div class="form-grup" style="margin-top: 1rem;">
+                    <label>Üretilen Kod (Kopyalayıp etkinlikler.json'a ekleyin):</label>
+                    <textarea id="etkinlik-sonuc" rows="10" readonly></textarea>
+                </div>
             </div>
-
+            <!-- Galeri JSON Üretici -->
             <div class="json-generator">
                 <h2>Galeri JSON Üretici</h2>
-                <form id="galeri-form">
-                     <div class="form-grup">
-                        <label for="galeri-resim">Resim URL'si (imgbb Direkt Bağlantı):</label>
-                        <input type="url" id="galeri-resim" placeholder="https://i.ibb.co/resim.jpg" required>
-                    </div>
-                    <div class="form-grup">
-                        <label for="galeri-aciklama">Kısa Açıklama:</label>
-                        <input type="text" id="galeri-aciklama" required>
-                    </div>
-                    <button type="submit" class="buton">JSON Üret</button>
-                </form>
+                <div class="form-grup"><label for="galeri-resim">Görsel URL'si (Direkt Link):</label><input type="url" id="galeri-resim" placeholder="https://i.ibb.co/resim.png"></div>
+                <div class="form-grup"><label for="galeri-aciklama">Kısa Açıklama:</label><input type="text" id="galeri-aciklama"></div>
+                <button id="galeri-uret-btn" class="buton">Galeri JSON Üret</button>
+                <div class="form-grup" style="margin-top: 1rem;">
+                    <label>Üretilen Kod (Kopyalayıp galeri.json'a ekleyin):</label>
+                    <textarea id="galeri-sonuc" rows="5" readonly></textarea>
+                </div>
             </div>
-
-            <div id="json-cikti-alani" style="display: none;">
-                <h3>Oluşturulan JSON Metni:</h3>
-                <p>Aşağıdaki metni kopyalayıp ilgili `.json` dosyasının içine, `[` karakterinden sonra veya son elemandan sonra virgül ekleyerek yapıştırın.</p>
-                <textarea id="json-cikti" rows="10" readonly></textarea>
-                <button id="kopyala-buton" class="buton">Metni Kopyala</button>
-                <p id="kopyalandi-mesaji" style="display: none; color: green;">Kopyalandı!</p>
-            </div>
-        </div>
+        </section>
     </main>
-
     <script src="admin.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // ... (admin.js dosyasındaki diğer kodlar buraya taşınabilir veya ayrı kalabilir)
-        // Resim alanı eklenmiş Etkinlik Formu JSON Üretici
-        const etkinlikForm = document.getElementById('etkinlik-form');
-        etkinlikForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const yeniEtkinlik = {
-                id: Date.now(),
-                baslik: document.getElementById('etkinlik-baslik').value,
-                resimUrl: document.getElementById('etkinlik-resim').value, // YENİ ALAN
-                detay: document.getElementById('etkinlik-detay').value,
-                tarih: document.getElementById('etkinlik-tarih').value,
-                mekan: document.getElementById('etkinlik-mekan').value,
-                harita: document.getElementById('etkinlik-harita').value.replace(/"/g, '\\"'),
-                kayitLinki: document.getElementById('etkinlik-kayit').value
-            };
-            const jsonCikti = JSON.stringify(yeniEtkinlik, null, 4);
-            document.getElementById('json-cikti-alani').style.display = 'block';
-            document.getElementById('json-cikti').value = jsonCikti;
-        });
-    });
-    </script>
 </body>
 </html>
 
