@@ -1,45 +1,44 @@
-/* Google Fonts'tan modern bir font ekleyelim */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* ... (diğer stilleriniz burada) ... */
 
-/* Renk Paleti ve Temel Değişkenler */
 :root {
     --first-color: #cd4545;
     --second-color: #f16821;
     --third-color: #f3a333;
     --fourth-color: #fffe9a;
-    --dark-text: #333333;
-    --light-text: #ffffff;
-    --background-color: #fdfdfd;
-    --border-color: #eeeeee;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --border-radius: 12px;
+    --text-color: #333;
+    --bg-color: #fff;
+    --light-gray: #f4f4f4;
 }
 
-/* Genel Sayfa Stilleri */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    color: var(--dark-text);
     line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
-/* Header ve Navigasyon */
+/* Header & Nav */
 .main-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: var(--light-text);
-    box-shadow: var(--shadow);
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+.logo-container {
+    flex: 1;
+}
+.logo-container:last-child {
+    text-align: right;
+}
 .logo {
-    height: 60px;
+    height: 50px;
     width: auto;
 }
 
@@ -50,11 +49,11 @@ body {
 
 .nav-link {
     text-decoration: none;
-    color: var(--dark-text);
-    font-weight: 600;
+    color: var(--text-color);
+    font-weight: 500;
     padding: 0.5rem 0;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
 }
 
 .nav-link::after {
@@ -63,9 +62,9 @@ body {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 3px;
+    height: 2px;
     background-color: var(--second-color);
-    transition: width 0.3s ease;
+    transition: width 0.3s ease-out;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -77,263 +76,149 @@ body {
 }
 
 .admin-link {
-    background: var(--first-color);
-    color: var(--light-text);
+    background-color: var(--first-color);
+    color: white;
     padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
 .admin-link:hover {
     background-color: #a83838;
-    color: var(--light-text);
+    color: white;
 }
-.admin-link:hover::after {
-    width: 0;
+.admin-link::after {
+    display: none;
 }
 
 
-/* Ana İçerik Alanı */
+/* Main Content */
 .content-container {
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 0 2rem;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border-radius: 8px;
 }
 
-/* Sayfa Geçiş Animasyonu */
-.fade-in {
-    animation: fadeInAnimation 0.7s ease-in-out;
+/* Etkinlik Sayfası Stilleri - GÜNCELLENDİ */
+.etkinlik-container {
+    display: grid;
+    gap: 2rem;
 }
 
-@keyframes fadeInAnimation {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.etkinlik-karti {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s;
 }
 
-h1, h2, h3 {
+.etkinlik-karti:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.etkinlik-resim {
+    width: 100%;
+    height: 300px; /* Sabit bir yükseklik verelim */
+    object-fit: cover; /* Resmin orantısını bozmadan kaplamasını sağlar */
+}
+
+.etkinlik-icerik {
+    padding: 1.5rem;
+}
+
+.etkinlik-karti h2 {
+    margin-top: 0;
     color: var(--first-color);
 }
 
-/* Butonlar */
-.buton {
-    display: inline-block;
-    padding: 0.8rem 1.8rem;
-    background-color: var(--second-color);
-    color: var(--light-text);
-    text-decoration: none;
-    border: none;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: var(--shadow);
+.etkinlik-detaylar {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease-in-out;
 }
 
-.buton:hover {
-    background-color: #d85c1e;
-    transform: translateY(-2px);
+/* Kart genişlediğinde detayları göster */
+.etkinlik-karti.expanded .etkinlik-detaylar {
+    max-height: 1000px; /* İçeriğin sığacağı kadar büyük bir değer */
 }
 
-.buton.danger {
-    background-color: var(--first-color);
+.etkinlik-bilgi {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: var(--light-gray);
+    border-left: 4px solid var(--third-color);
 }
-.buton.danger:hover {
-    background-color: #a83838;
-}
-
-/* Ana Sayfa Özel Stilleri */
-.hero { text-align: center; padding: 3rem 0; }
-.hero-image-placeholder { 
-    background-color: var(--border-color);
-    height: 400px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--border-radius);
-    margin-top: 2rem;
-    color: #aaa;
-}
-.quick-links { margin-top: 3rem; text-align: center; }
-.link-cards { display: flex; gap: 1.5rem; margin-top: 1.5rem; justify-content: center; }
-.card { 
-    background: var(--light-text); 
-    padding: 2rem; 
-    border-radius: var(--border-radius); 
-    box-shadow: var(--shadow); 
-    flex: 1;
-    max-width: 350px;
-    text-decoration: none;
-    color: var(--dark-text);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+.etkinlik-bilgi p {
+    margin: 0.5rem 0;
 }
 
-/* Etkinlikler Sayfası */
-.etkinlik-container { display: flex; flex-direction: column; gap: 2rem; }
-.etkinlik-karti {
-    background: var(--light-text);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
 .etkinlik-map iframe {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 5px;
     margin-top: 1rem;
-    min-height: 300px;
-}
-.etkinlik-bilgi {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
 }
 
-/* Galeri Sayfası */
+.toggle-detay-btn {
+    background: none;
+    border: none;
+    color: var(--second-color);
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    margin-top: 1rem;
+}
+
+/* Galeri Stilleri */
 .galeri-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: 1rem;
 }
+
 .galeri-karti {
-    background: var(--light-text);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    border-radius: 8px;
     overflow: hidden;
-    break-inside: avoid; /* Masonry efekti için */
-    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
 .galeri-karti img {
     width: 100%;
     height: auto;
     display: block;
 }
+
 .galeri-karti p {
     padding: 1rem;
     margin: 0;
+    background-color: var(--light-gray);
 }
 
-/* Üye Kayıt Sayfası */
-.atölye-kayit-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-.atölye-butonu {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+
+/* Genel Buton */
+.buton {
+    display: inline-block;
+    background-color: var(--second-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
 }
 
-/* İletişim Sayfası */
-.iletisim-kartlari {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
+.buton:hover {
+    background-color: #d1561a;
 }
-.iletisim-karti {
-    background: var(--light-text);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-    width: 300px;
-}
-.iletisim-karti img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-.email-gonder-container {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-/* Admin Paneli */
-.admin-body { background-color: #f0f2f5; }
-.admin-form-container {
-    max-width: 500px;
-    margin: 5rem auto;
-    padding: 2rem;
-    background: white;
-    box-shadow: var(--shadow);
-    border-radius: var(--border-radius);
-    text-align: center;
-}
-.admin-form-container input { width: calc(100% - 20px); padding: 10px; margin-bottom: 1rem; border: 1px solid var(--border-color); border-radius: 8px; }
-.hidden { display: none !important; }
-.error-message { color: var(--first-color); font-weight: bold; }
-
-.admin-section {
-    background: white;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-}
-.admin-form { display: flex; flex-direction: column; gap: 1rem; }
-.admin-form input, .admin-form textarea {
-    padding: 0.8rem;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-}
-.admin-liste-oge {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
-}
-.admin-galeri-karti {
-    position: relative;
-}
-.admin-galeri-karti .buton.danger {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
 
 /* Footer */
 .main-footer {
     text-align: center;
     padding: 2rem;
-    margin-top: 3rem;
-    background-color: var(--dark-text);
-    color: var(--light-text);
+    margin-top: 2rem;
+    background-color: var(--light-gray);
 }
 
-/* Mobil Cihazlar için Duyarlılık */
-@media (max-width: 768px) {
-    .main-header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .main-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem 1rem;
-    }
-    .link-cards, .iletisim-kartlari {
-        flex-direction: column;
-        align-items: center;
-    }
-}
