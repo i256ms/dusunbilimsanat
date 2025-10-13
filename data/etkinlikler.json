@@ -1,1 +1,12 @@
+[
+  {
+    "id": 1728169200000,
+    "baslik": "Örnek Etkinlik: Tanışma Toplantısı",
+    "detay": "Yeni dönem tanışma toplantımızda bir araya geliyoruz! Projelerimizi ve atölyelerimizi konuşacağımız bu etkinliğe herkesi bekliyoruz.",
+    "tarih": "2025-10-12T18:00",
+    "mekan": "Mühendislik Fakültesi Konferans Salonu",
+    "harita": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3126.985953939132!2d27.13823461533513!3d38.41885497964724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbd8e4b1b8a5d1%3A0x8e8e8e8e8e8e8e8e!2sDokuz%20Eyl%C3%BCl%20%C3%9Cniversitesi!5e0!3m2!1str!2str!4v1633872000000!5m2!1str!2str\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>",
+    "kayitLinki": "https://forms.gle/orneklink"
+  }
+]
 
