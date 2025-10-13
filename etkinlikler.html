@@ -9,7 +9,6 @@
 <body>
     <header class="main-header">
          <div class="logo-container">
-             <!-- LOGO LİNKİ GÜNCELLENDİ -->
              <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
         </div>
         <nav class="main-nav">
@@ -19,14 +18,15 @@
             <a href="galeri.html" class="nav-link">Galeri</a>
             <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
             <a href="iletisim.html" class="nav-link">İletişim</a>
+             <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
         </nav>
         <div class="logo-container">
-            
+            <img src="https://placehold.co/150x60/cd4545/white?text=Üniversite+Logo" alt="Üniversite Logosu" class="logo">
         </div>
     </header>
 
     <main class="content-container fade-in">
-        <h1>Aktif Etkinliklerimiz</h1>
+        <h1>Etkinliklerimiz</h1>
         <div id="etkinlik-listesi" class="etkinlik-container">
             <!-- Etkinlikler JavaScript tarafından buraya dinamik olarak eklenecek -->
         </div>
@@ -39,15 +39,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const etkinlikListesi = document.getElementById('etkinlik-listesi');
-            
-            // Bu link doğru, bir değişiklik yapmadık.
             const etkinliklerJsonUrl = 'https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/data/etkinlikler.json';
 
             fetch(etkinliklerJsonUrl)
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Veri alınamadı. Ağ hatası olabilir.');
-                    }
+                    if (!response.ok) throw new Error('Veri alınamadı.');
                     return response.json();
                 })
                 .then(etkinlikler => {
@@ -60,24 +56,45 @@
                         const etkinlikKarti = document.createElement('div');
                         etkinlikKarti.classList.add('etkinlik-karti');
 
+                        // Kartın içeriğini yeni yapıya göre oluştur
                         etkinlikKarti.innerHTML = `
-                            <h2>${etkinlik.baslik}</h2>
-                            <p class="etkinlik-detay">${etkinlik.detay}</p>
-                            <div class="etkinlik-bilgi">
-                                <p><strong>Tarih:</strong> ${new Date(etkinlik.tarih).toLocaleString('tr-TR', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
-                                <p><strong>Mekan:</strong> ${etkinlik.mekan}</p>
+                            <img src="${etkinlik.resimUrl}" alt="${etkinlik.baslik}" class="etkinlik-resim">
+                            <div class="etkinlik-icerik">
+                                <h2>${etkinlik.baslik}</h2>
+                                <div class="etkinlik-detaylar">
+                                    <p class="etkinlik-detay">${etkinlik.detay.replace(/\n/g, '<br>')}</p>
+                                    <div class="etkinlik-bilgi">
+                                        <p><strong>Tarih:</strong> ${new Date(etkinlik.tarih).toLocaleString('tr-TR', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                                        <p><strong>Mekan:</strong> ${etkinlik.mekan}</p>
+                                    </div>
+                                    <div class="etkinlik-map">
+                                        ${etkinlik.harita}
+                                    </div>
+                                    <a href="${etkinlik.kayitLinki}" target="_blank" class="buton">Kayıt Ol</a>
+                                </div>
+                                <button class="toggle-detay-btn">Daha Fazla Göster</button>
                             </div>
-                            <div class="etkinlik-map">
-                                ${etkinlik.harita}
-                            </div>
-                            <a href="${etkinlik.kayitLinki}" target="_blank" class="buton">Kayıt Ol</a>
                         `;
                         etkinlikListesi.appendChild(etkinlikKarti);
+                    });
+
+                    // Butonlara tıklama olayını ekle
+                    etkinlikListesi.addEventListener('click', function(e) {
+                        if (e.target && e.target.classList.contains('toggle-detay-btn')) {
+                            const kart = e.target.closest('.etkinlik-karti');
+                            kart.classList.toggle('expanded');
+                            
+                            if (kart.classList.contains('expanded')) {
+                                e.target.textContent = 'Daha Az Göster';
+                            } else {
+                                e.target.textContent = 'Daha Fazla Göster';
+                            }
+                        }
                     });
                 })
                 .catch(error => {
                     console.error('Etkinlikler yüklenirken hata oluştu:', error);
-                    etkinlikListesi.innerHTML = '<p>Etkinlikler yüklenirken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.</p>';
+                    etkinlikListesi.innerHTML = '<p>Etkinlikler yüklenirken bir sorun oluştu.</p>';
                 });
         });
     </script>
