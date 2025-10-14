@@ -1,31 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loginSection = document.getElementById('login-section');
-    const adminIcerik = document.getElementById('admin-icerik');
-    const loginBtn = document.getElementById('login-btn');
+    // === GİRİŞ PANELİ İŞLEVLERİ ===
+    const loginContainer = document.getElementById('login-container');
+    const adminPanel = document.getElementById('admin-panel');
+    const loginButton = document.getElementById('login-button');
     const passwordInput = document.getElementById('password');
     const loginError = document.getElementById('login-error');
+    
+    const correctPassword = 'DBS35-admin';
 
-    const DOGRU_SIFRE = "DüşünBilimSanat3531";
-
-    // Giriş yapma işlemi
-    loginBtn.addEventListener('click', () => {
-        if (passwordInput.value === DOGRU_SIFRE) {
-            loginSection.style.display = 'none';
-            adminIcerik.style.display = 'block';
+    // Giriş yapma fonksiyonu
+    const handleLogin = () => {
+        if (passwordInput.value === correctPassword) {
+            loginContainer.style.display = 'none';
+            adminPanel.style.display = 'block';
         } else {
             loginError.style.display = 'block';
         }
-    });
+    };
+
+    // Butona tıklandığında giriş yapmayı dene
+    loginButton.addEventListener('click', handleLogin);
     
-    passwordInput.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-            loginBtn.click();
+    // Enter tuşuna basıldığında giriş yapmayı dene
+    passwordInput.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            handleLogin();
         }
     });
 
-    // Etkinlik JSON Üretici
-    const etkinlikUretBtn = document.getElementById('etkinlik-uret-btn');
-    etkinlikUretBtn.addEventListener('click', () => {
+    // === ETKİNLİK JSON ÜRETİCİSİ ===
+    const etkinlikJsonUretBtn = document.getElementById('etkinlik-json-uret');
+    etkinlikJsonUretBtn.addEventListener('click', () => {
         const etkinlik = {
             id: Date.now(),
             baslik: document.getElementById('etkinlik-baslik').value,
@@ -34,22 +39,29 @@ document.addEventListener('DOMContentLoaded', () => {
             tarih: document.getElementById('etkinlik-tarih').value,
             mekan: document.getElementById('etkinlik-mekan').value,
             harita: document.getElementById('etkinlik-harita').value,
-            kayitLinki: document.getElementById('etkinlik-kayit').value,
+            kayitLinki: document.getElementById('etkinlik-link').value
         };
-        const sonucJSON = JSON.stringify(etkinlik, null, 2); // 2-space indentation
-        document.getElementById('etkinlik-sonuc').value = `,\n${sonucJSON}`;
+
+        const jsonCiktiAlani = document.getElementById('etkinlik-json-cikti');
+        // JSON'u okunabilir formatta (pretty-print) string'e çevir
+        const jsonString = JSON.stringify(etkinlik, null, 4); 
+        jsonCiktiAlani.textContent = `,\n${jsonString}`; // Başına virgül ve yeni satır ekle
+        jsonCiktiAlani.style.display = 'block';
     });
 
-    // Galeri JSON Üretici
-    const galeriUretBtn = document.getElementById('galeri-uret-btn');
-    galeriUretBtn.addEventListener('click', () => {
+    // === GALERİ JSON ÜRETİCİSİ ===
+    const galeriJsonUretBtn = document.getElementById('galeri-json-uret');
+    galeriJsonUretBtn.addEventListener('click', () => {
         const galeriOgesi = {
             id: Date.now(),
-            resimUrl: document.getElementById('galeri-resim').value,
-            aciklama: document.getElementById('galeri-aciklama').value,
+            resimUrl: document.getElementById('galeri-resim-url').value,
+            aciklama: document.getElementById('galeri-aciklama').value
         };
-        const sonucJSON = JSON.stringify(galeriOgesi, null, 2);
-        document.getElementById('galeri-sonuc').value = `,\n${sonucJSON}`;
+        
+        const jsonCiktiAlani = document.getElementById('galeri-json-cikti');
+        const jsonString = JSON.stringify(galeriOgesi, null, 4);
+        jsonCiktiAlani.textContent = `,\n${jsonString}`; // Başına virgül ve yeni satır ekle
+        jsonCiktiAlani.style.display = 'block';
     });
 });
 
