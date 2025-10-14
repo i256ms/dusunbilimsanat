@@ -5,38 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Üye Kayıt - Düşün Bilim Sanat</title>
     <link rel="stylesheet" href="style.css">
+    <!-- İkonlar için Font Awesome kütüphanesi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header class="main-header">
-        <div class="logo-container">
-           <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
-       </div>
-       <nav class="main-nav">
-           <a href="index.html" class="nav-link">Ana Sayfa</a>
-           <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
-           <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
-           <a href="galeri.html" class="nav-link">Galeri</a>
-           <a href="uye-kayit.html" class="nav-link active">Üye Kayıt</a>
-           <a href="iletisim.html" class="nav-link">İletişim</a>
-           <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
-       </nav>
-       <div class="logo-container">
-           <img src="https://i.ibb.co/9g0gJ5N/deulogo.png" alt="Üniversite Logosu" class="logo">
-       </div>
-   </header>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Ana Sayfa</a>
+            <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
+            <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
+            <a href="galeri.html" class="nav-link">Galeri</a>
+            <a href="uye-kayit.html" class="nav-link active">Üye Kayıt</a>
+            <a href="iletisim.html" class="nav-link">İletişim</a>
+            <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
+        </nav>
+    </header>
 
     <main class="content-container fade-in">
-        <section>
+        <div class="sayfa-basligi">
             <h1>Üye Kayıt</h1>
-            <p>Aşağıdaki atölyelerimizden ilgini çekenlere kayıt olabilirsin.</p>
-            <div>
-                <a href="<!-- ATÖLYE 1 FORM LİNKİ -->" class="buton" target="_blank">Felsefe Atölyesi</a>
-                <a href="<!-- ATÖLYE 2 FORM LİNKİ -->" class="buton" target="_blank">Sanat Atölyesi</a>
-                <a href="<!-- ATÖLYE 3 FORM LİNKİ -->" class="buton" target="_blank">Bilim Atölyesi</a>
-                <a href="<!-- ATÖLYE 4 FORM LİNKİ -->" class="buton" target="_blank">Yazılım Atölyesi</a>
-                <a href="<!-- ATÖLYE 5 FORM LİNKİ -->" class="buton" target="_blank">Müzik Atölyesi</a>
-            </div>
-        </section>
+            <p>Aramıza katılmak ve atölyelerimizde yer almak için aşağıdaki formları doldurabilirsiniz.</p>
+        </div>
+
+        <div class="uye-kayit-grid">
+            <!-- BU BÖLÜMÜ DOLDURUN: Her atölye kartının href="#" kısmına kendi form linkinizi yapıştırın. -->
+            
+            <a href="#" target="_blank" class="uye-kayit-karti">
+                <div class="ikon-container" style="--ikon-renk: #cd4545;">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3>Felsefe Atölyesi</h3>
+                <p>Eleştirel düşünce ve felsefi tartışmalarla zihnimizi keskinleştiriyoruz.</p>
+            </a>
+
+            <a href="#" target="_blank" class="uye-kayit-karti">
+                <div class="ikon-container" style="--ikon-renk: #f16821;">
+                    <i class="fa-solid fa-flask"></i>
+                </div>
+                <h3>Bilim Atölyesi</h3>
+                <p>Popüler bilim konularını ve son gelişmeleri mercek altına alıyoruz.</p>
+            </a>
+            
+            <a href="#" target="_blank" class="uye-kayit-karti">
+                 <div class="ikon-container" style="--ikon-renk: #f3a333;">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <h3>Sanat Atölyesi</h3>
+                <p>Sanat tarihi, estetik ve yaratıcılık üzerine keyifli sohbetler ediyoruz.</p>
+            </a>
+
+            <a href="#" target="_blank" class="uye-kayit-karti">
+                <div class="ikon-container" style="--ikon-renk: #6a8acd;">
+                    <i class="fa-solid fa-film"></i>
+                </div>
+                <h3>Sinema Atölyesi</h3>
+                <p>Film analizleri ve yönetmen okumaları ile sinema dünyasını keşfediyoruz.</p>
+            </a>
+
+             <a href="#" target="_blank" class="uye-kayit-karti">
+                <div class="ikon-container" style="--ikon-renk: #5ac467;">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <h3>Edebiyat Atölyesi</h3>
+                <p>Klasik ve modern eserler üzerinden metin okumaları yapıyoruz.</p>
+            </a>
+        </div>
     </main>
 
     <footer class="main-footer">
