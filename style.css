@@ -261,6 +261,7 @@ footer.main-footer {
     background-color: var(--light-gray);
     padding: 2rem;
     border-radius: 8px;
+    text-align: center;
 }
 
 .misyon-vizyon-karti h2 {
