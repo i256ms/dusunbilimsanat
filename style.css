@@ -30,7 +30,7 @@ h1, h2, h3 {
 /* Header & Navigasyon */
 header.main-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Navigasyonu ortalamak için değiştirildi */
     align-items: center;
     padding: 1rem 2rem;
     background-color: white;
@@ -42,12 +42,6 @@ header.main-header {
     box-sizing: border-box;
 }
 
-.logo-container {
-    flex: 1;
-}
-.logo-container:last-child {
-    text-align: right;
-}
 .logo {
     height: 50px;
     width: auto;
@@ -57,7 +51,6 @@ nav.main-nav {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
-    flex: 3;
 }
 
 .nav-link {
@@ -154,9 +147,19 @@ footer.main-footer {
 /* SAYFA ÖZEL STİLLERİ */
 /* ============================================= */
 
-/* ANA SAYFA - HIZLI ERİŞİM */
+/* ANA SAYFA */
+.welcome-section {
+    text-align: center;
+}
+
+.welcome-logo {
+    height: 80px; /* Logonun boyutunu buradan ayarlayabilirsiniz */
+    margin-bottom: 1.5rem;
+}
+
 .hizli-erisim {
     text-align: center;
+    margin-top: 3rem; /* Üst kısımla arasına boşluk ekleyelim */
 }
 .hizli-erisim-grid {
     display: grid;
