@@ -3,65 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Paneli</title>
+    <title>Admin Paneli - Düşün Bilim Sanat</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header class="main-header">
-        <div class="logo-container">
-            <a href="index.html" style="line-height: 0;">
-                <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
-            </a>
-        </div>
         <nav class="main-nav">
-             <h1>Admin Paneli</h1>
+            <a href="index.html" class="nav-link">Ana Sayfa</a>
+            <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
+            <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
+            <a href="galeri.html" class="nav-link">Galeri</a>
+            <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
+            <a href="iletisim.html" class="nav-link">İletişim</a>
+            <a href="admin.html" class="nav-link admin-link active">Admin Paneli</a>
         </nav>
-        <div class="logo-container">
-             <a href="index.html" class="buton">Siteyi Görüntüle</a>
-        </div>
     </header>
 
     <main class="content-container fade-in">
-        <section id="login-section">
-            <h2>Yönetici Girişi</h2>
+        <div id="login-container" class="login-container">
+            <i class="fa-solid fa-lock login-ikon"></i>
+            <h1>Admin Girişi</h1>
+            <p>İçerikleri yönetmek için lütfen şifrenizi girin.</p>
             <div class="form-grup">
-                <label for="password">Şifre:</label>
-                <input type="password" id="password" placeholder="Şifrenizi girin">
+                <input type="password" id="password" placeholder="Şifre">
             </div>
-            <button id="login-btn" class="buton">Giriş Yap</button>
+            <button id="login-button" class="buton">Giriş Yap</button>
             <p id="login-error" class="error-mesaj" style="display: none;">Hatalı şifre!</p>
-        </section>
+        </div>
 
-        <section id="admin-icerik" style="display: none;">
-            <!-- Etkinlik JSON Üretici -->
-            <div class="json-generator">
-                <h2>Etkinlik JSON Üretici</h2>
-                <div class="form-grup"><label for="etkinlik-baslik">Etkinlik Başlığı:</label><input type="text" id="etkinlik-baslik"></div>
-                <div class="form-grup"><label for="etkinlik-detay">Etkinlik Detay Metni (Paragraflar için Enter kullanın):</label><textarea id="etkinlik-detay" rows="5"></textarea></div>
-                <div class="form-grup"><label for="etkinlik-resim">Etkinlik Görseli URL'si:</label><input type="url" id="etkinlik-resim" placeholder="https://i.ibb.co/resim.png"></div>
-                <div class="form-grup"><label for="etkinlik-tarih">Tarih ve Saat:</label><input type="datetime-local" id="etkinlik-tarih"></div>
-                <div class="form-grup"><label for="etkinlik-mekan">Mekan İsmi:</label><input type="text" id="etkinlik-mekan"></div>
-                <div class="form-grup"><label for="etkinlik-harita">Harita Gömme Kodu (embed):</label><textarea id="etkinlik-harita" rows="3"></textarea></div>
-                <div class="form-grup"><label for="etkinlik-kayit">Kayıt Formu Linki:</label><input type="url" id="etkinlik-kayit"></div>
-                <button id="etkinlik-uret-btn" class="buton">Etkinlik JSON Üret</button>
-                <div class="form-grup" style="margin-top: 1rem;">
-                    <label>Üretilen Kod (Kopyalayıp etkinlikler.json'a ekleyin):</label>
-                    <textarea id="etkinlik-sonuc" rows="10" readonly></textarea>
-                </div>
+        <div id="admin-panel" class="admin-icerik-yonetimi" style="display: none;">
+            <div class="sayfa-basligi">
+                <h1>İçerik Yönetimi</h1>
+                <p>Buradan yeni etkinlikler ve galeri görselleri ekleyebilirsiniz.</p>
             </div>
-            <!-- Galeri JSON Üretici -->
+            <a href="index.html" class="buton siteyi-goruntule"><i class="fa-solid fa-eye"></i> Siteyi Görüntüle</a>
+            
             <div class="json-generator">
-                <h2>Galeri JSON Üretici</h2>
-                <div class="form-grup"><label for="galeri-resim">Görsel URL'si (Direkt Link):</label><input type="url" id="galeri-resim" placeholder="https://i.ibb.co/resim.png"></div>
-                <div class="form-grup"><label for="galeri-aciklama">Kısa Açıklama:</label><input type="text" id="galeri-aciklama"></div>
-                <button id="galeri-uret-btn" class="buton">Galeri JSON Üret</button>
-                <div class="form-grup" style="margin-top: 1rem;">
-                    <label>Üretilen Kod (Kopyalayıp galeri.json'a ekleyin):</label>
-                    <textarea id="galeri-sonuc" rows="5" readonly></textarea>
+                <h2><i class="fa-regular fa-calendar-plus"></i> Yeni Etkinlik Ekle</h2>
+                <div class="form-grup">
+                    <label for="etkinlik-baslik">Etkinlik Başlığı:</label>
+                    <input type="text" id="etkinlik-baslik" required>
                 </div>
+                <div class="form-grup">
+                    <label for="etkinlik-detay">Etkinlik Detayı (Açıklama):</label>
+                    <textarea id="etkinlik-detay" rows="4" required></textarea>
+                </div>
+                <div class="form-grup">
+                    <label for="etkinlik-resim">Etkinlik Görseli URL'si:</label>
+                    <input type="url" id="etkinlik-resim" placeholder="https://..." required>
+                </div>
+                <div class="form-grup">
+                    <label for="etkinlik-tarih">Tarih ve Saat:</label>
+                    <input type="datetime-local" id="etkinlik-tarih" required>
+                </div>
+                <div class="form-grup">
+                    <label for="etkinlik-mekan">Mekan Adı:</label>
+                    <input type="text" id="etkinlik-mekan" required>
+                </div>
+                <div class="form-grup">
+                    <label for="etkinlik-harita">Harita Gömme Kodu (Embed):</label>
+                    <textarea id="etkinlik-harita" rows="3" required></textarea>
+                </div>
+                <div class="form-grup">
+                    <label for="etkinlik-link">Kayıt Formu Linki:</label>
+                    <input type="url" id="etkinlik-link" placeholder="https://..." required>
+                </div>
+                <button id="etkinlik-json-uret" class="buton">Etkinlik JSON Kodu Üret</button>
+                <div id="etkinlik-json-cikti" class="json-output" style="display: none;"></div>
             </div>
-        </section>
+
+            <div class="json-generator">
+                <h2><i class="fa-regular fa-image"></i> Yeni Galeri Görseli Ekle</h2>
+                 <div class="form-grup">
+                    <label for="galeri-resim-url">Görselin Direkt Linki (imgbb, GitHub Raw vb.):</label>
+                    <input type="url" id="galeri-resim-url" placeholder="https://... .jpg" required>
+                </div>
+                <div class="form-grup">
+                    <label for="galeri-aciklama">Görsel Açıklaması:</label>
+                    <input type="text" id="galeri-aciklama" required>
+                </div>
+                <button id="galeri-json-uret" class="buton">Galeri JSON Kodu Üret</button>
+                <div id="galeri-json-cikti" class="json-output" style="display: none;"></div>
+            </div>
+        </div>
     </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Düşün Bilim Sanat. Tüm Hakları Saklıdır.</p>
+    </footer>
+
     <script src="admin.js"></script>
 </body>
 </html>
