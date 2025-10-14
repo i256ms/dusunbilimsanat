@@ -156,6 +156,17 @@ footer.main-footer {
     height: 120px; /* Logonun boyutunu buradan ayarlayabilirsiniz */
     margin-bottom: 1.5rem;
 }
+.banner-container {
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden; /* Köşelerin yuvarlak kalması için */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.banner-container img {
+    width: 100%;
+    display: block; /* Altında oluşabilecek boşluğu engeller */
+}
 
 .hizli-erisim {
     text-align: center;
