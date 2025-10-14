@@ -5,56 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim - Düşün Bilim Sanat</title>
     <link rel="stylesheet" href="style.css">
+    <!-- İkonlar için Font Awesome kütüphanesi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header class="main-header">
-        <div class="logo-container">
-           <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
-       </div>
-       <nav class="main-nav">
-           <a href="index.html" class="nav-link">Ana Sayfa</a>
-           <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
-           <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
-           <a href="galeri.html" class="nav-link">Galeri</a>
-           <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
-           <a href="iletisim.html" class="nav-link active">İletişim</a>
-           <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
-       </nav>
-       <div class="logo-container">
-           <img src="https://i.ibb.co/9g0gJ5N/deulogo.png" alt="Üniversite Logosu" class="logo">
-       </div>
-   </header>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Ana Sayfa</a>
+            <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
+            <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
+            <a href="galeri.html" class="nav-link">Galeri</a>
+            <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
+            <a href="iletisim.html" class="nav-link active">İletişim</a>
+            <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
+        </nav>
+    </header>
 
     <main class="content-container fade-in">
-        <h1>İletişim</h1>
-        <p>Sorularınız, önerileriniz veya iş birlikleri için bize ulaşmaktan çekinmeyin.</p>
-        
-        <section class="iletisim-grid">
-            <article class="yonetici-karti">
-                <img src="https://placehold.co/120x120/f3a333/white?text=Yönetici+1" alt="Yönetici 1">
-                <h3><!-- YÖNETİCİ 1 ADI --></h3>
-                <p class="unvan">Başkan</p>
-                <p><!-- YÖNETİCİ 1 EMAİL --></p>
-            </article>
-            <article class="yonetici-karti">
-                <img src="https://placehold.co/120x120/f16821/white?text=Yönetici+2" alt="Yönetici 2">
-                <h3><!-- YÖNETİCİ 2 ADI --></h3>
-                <p class="unvan">Başkan Yardımcısı</p>
-                <p><!-- YÖNETİCİ 2 EMAİL --></p>
-            </article>
-            <article class="yonetici-karti">
-                <img src="https://placehold.co/120x120/cd4545/white?text=Yönetici+3" alt="Yönetici 3">
-                <h3><!-- YÖNETİCİ 3 ADI --></h3>
-                <p class="unvan">Genel Sekreter</p>
-                <p><!-- YÖNETİCİ 3 EMAİL --></p>
-            </article>
-        </section>
+        <div class="sayfa-basligi">
+            <h1>İletişim</h1>
+            <p>Sorularınız, önerileriniz veya iş birlikleri için bize ulaşmaktan çekinmeyin.</p>
+        </div>
 
-        <section class="toplu-mail">
-            <h2>Toplu E-posta</h2>
-            <p>Tüm yönetim kurulumuza tek bir adresten ulaşabilirsiniz.</p>
-            <a href="mailto:deudusunbilimsanat@gmail.com" class="buton">E-posta Gönder</a>
-        </section>
+        <div class="iletisim-grid">
+            <!-- BU BÖLÜMÜ DOLDURUN: Yönetici bilgilerini ve fotoğraflarını güncelleyin -->
+            <div class="yonetici-karti">
+                <img src="https://placehold.co/200x200/f16821/ffffff?text=Yönetici+1" alt="Yönetici 1">
+                <h3>Yönetici Adı 1</h3>
+                <p class="unvan">Başkan</p>
+                <p>yonetici1@email.com</p>
+            </div>
+
+            <div class="yonetici-karti">
+                <img src="https://placehold.co/200x200/f3a333/ffffff?text=Yönetici+2" alt="Yönetici 2">
+                <h3>Yönetici Adı 2</h3>
+                <p class="unvan">Başkan Yardımcısı</p>
+                <p>yonetici2@email.com</p>
+            </div>
+
+            <div class="yonetici-karti">
+                <img src="https://placehold.co/200x200/cd4545/ffffff?text=Yönetici+3" alt="Yönetici 3">
+                <h3>Yönetici Adı 3</h3>
+                <p class="unvan">Genel Sekreter</p>
+                <p>yonetici3@email.com</p>
+            </div>
+        </div>
+
+        <div class="toplu-mail">
+            <h2>Bize E-posta Gönderin</h2>
+            <p>Tüm yönetim ekibine ulaşmak için aşağıdaki butonu kullanabilirsiniz.</p>
+            <a href="mailto:deudusunbilimsanat@gmail.com" class="buton">
+                <i class="fa-regular fa-envelope"></i> Toplu E-posta Gönder
+            </a>
+        </div>
     </main>
 
     <footer class="main-footer">
