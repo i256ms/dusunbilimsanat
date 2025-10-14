@@ -8,27 +8,24 @@
 </head>
 <body>
     <header class="main-header">
-        <div class="logo-container">
-           <img src="https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/dbslogo.png" alt="Kulüp Logosu" class="logo">
-       </div>
-       <nav class="main-nav">
-           <a href="index.html" class="nav-link">Ana Sayfa</a>
-           <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
-           <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
-           <a href="galeri.html" class="nav-link active">Galeri</a>
-           <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
-           <a href="iletisim.html" class="nav-link">İletişim</a>
-           <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
-       </nav>
-       <div class="logo-container">
-           <img src="https://i.ibb.co/9g0gJ5N/deulogo.png" alt="Üniversite Logosu" class="logo">
-       </div>
-   </header>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Ana Sayfa</a>
+            <a href="biz-kimiz.html" class="nav-link">Biz Kimiz</a>
+            <a href="etkinlikler.html" class="nav-link">Etkinliklerimiz</a>
+            <a href="galeri.html" class="nav-link active">Galeri</a>
+            <a href="uye-kayit.html" class="nav-link">Üye Kayıt</a>
+            <a href="iletisim.html" class="nav-link">İletişim</a>
+            <a href="admin.html" class="nav-link admin-link">Admin Paneli</a>
+        </nav>
+    </header>
 
     <main class="content-container fade-in">
-        <h1>Galeri</h1>
+        <div class="sayfa-basligi">
+            <h1>Galeri</h1>
+            <p>Etkinliklerimizden ve buluşmalarımızdan en güzel anılar.</p>
+        </div>
         <div id="galeri-container" class="galeri-grid">
-            <!-- Galeri görselleri JavaScript tarafından buraya eklenecek -->
+            <!-- Galeri görselleri JavaScript tarafından buraya dinamik olarak eklenecek -->
         </div>
     </main>
 
@@ -37,37 +34,39 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function() {
         const galeriContainer = document.getElementById('galeri-container');
         const galeriJsonUrl = 'https://raw.githubusercontent.com/i256ms/dusunbilimsanat/main/data/galeri.json';
 
         fetch(galeriJsonUrl)
             .then(response => {
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                if (!response.ok) throw new Error('Network response was not ok.');
                 return response.json();
             })
             .then(galeriOgeleri => {
-                 if (!galeriOgeleri || galeriOgeleri.length === 0) {
-                    galeriContainer.innerHTML = '<p>Galeride henüz görsel bulunmamaktadır.</p>';
+                if (!galeriOgeleri || galeriOgeleri.length === 0) {
+                    galeriContainer.innerHTML = '<p>Galeride henüz hiç görsel bulunmamaktadır.</p>';
                     return;
                 }
-                galeriContainer.innerHTML = ''; // Temizle
+                
+                galeriContainer.innerHTML = '';
                 galeriOgeleri.slice().reverse().forEach(oge => {
-                    const kart = document.createElement('div');
-                    kart.className = 'galeri-karti';
-                    kart.innerHTML = `
+                    const galeriKarti = document.createElement('div');
+                    galeriKarti.classList.add('galeri-karti');
+                    galeriKarti.innerHTML = `
                         <img src="${oge.resimUrl}" alt="${oge.aciklama}">
                         <p>${oge.aciklama}</p>
                     `;
-                    galeriContainer.appendChild(kart);
+                    galeriContainer.appendChild(galeriKarti);
                 });
             })
             .catch(error => {
-                console.error('Galeri yüklenirken hata:', error);
-                galeriContainer.innerHTML = '<p>Galeri yüklenirken bir sorun oluştu.</p>';
+                console.error('Galeri yüklenirken hata oluştu:', error);
+                galeriContainer.innerHTML = '<p>Galeri yüklenirken bir sorun oluştu. Lütfen daha sonra tekrar deneyin.</p>';
             });
     });
     </script>
+
 </body>
 </html>
 
