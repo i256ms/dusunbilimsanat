@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
     const loginError = document.getElementById('login-error');
 
-    const DOGRU_SIFRE = "DBS35-admin-fenerbahçe";
+    const DOGRU_SIFRE = "DüşünBilimSanat3531";
 
     // Giriş yapma işlemi
     loginBtn.addEventListener('click', () => {
