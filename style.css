@@ -132,11 +132,17 @@ footer.main-footer { text-align: center; padding: 2rem; background-color: var(--
 .yonetici-karti .unvan { color: #666; font-style: italic; margin-top: 0.2rem; }
 .toplu-mail { text-align: center; background-color: var(--light-gray); padding: 2rem; border-radius: 12px; }
 .toplu-mail p { margin-top: 0; }
-
-/* ADMIN */
-.form-grup { margin-bottom: 1.5rem; }
+.login-container { max-width: 450px; margin: 4rem auto; padding: 3rem; border: 1px solid var(--border-color); border-radius: 12px; text-align: center; background-color: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.login-ikon { font-size: 2rem; color: var(--third-color); margin-bottom: 1rem; }
+.login-container p { color: #666; }
+.admin-icerik-yonetimi .siteyi-goruntule { display: block; width: fit-content; margin: 0 auto 3rem auto; }
+.json-generator { background-color: #fff; padding: 2rem; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.json-generator h2 { display: flex; align-items: center; gap: 0.75rem; margin-top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.form-grup { margin-bottom: 1.5rem; text-align: left; }
 .form-grup label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
-.form-grup input, .form-grup textarea { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem; box-sizing: border-box; }
-.json-generator { padding: 2rem; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 2rem; }
-.error-mesaj { color: red; margin-top: 1rem; }
+.form-grup input[type="text"], .form-grup input[type="url"], .form-grup input[type="password"], .form-grup input[type="datetime-local"], .form-grup textarea { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s, box-shadow 0.3s; }
+.form-grup input:focus, .form-grup textarea:focus { outline: none; border-color: var(--second-color); box-shadow: 0 0 0 3px rgba(241, 104, 33, 0.2); }
+textarea { resize: vertical; min-height: 120px; }
+.json-output { background-color: var(--light-gray); border: 1px solid var(--border-color); padding: 1rem; border-radius: 8px; white-space: pre-wrap; word-break: break-all; font-family: 'Courier New', Courier, monospace; margin-top: 1.5rem; }
+.error-mesaj { color: var(--first-color); margin-top: 1rem; font-weight: 500; }
 
