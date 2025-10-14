@@ -26,7 +26,7 @@ h1, h2, h3 { color: var(--text-color); }
 
 /* Header & Navigasyon */
 header.main-header { display: flex; justify-content: center; align-items: center; padding: 1rem 2rem; background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; width: 100%; box-sizing: border-box; }
-nav.main-nav { display: flex; gap: 1.5rem; justify-content: center; }
+nav.main-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
 .nav-link { text-decoration: none; color: var(--text-color); font-weight: 500; padding: 0.5rem 0; position: relative; transition: color 0.3s; }
 .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--second-color); transition: width 0.3s ease-out; }
 .nav-link:hover, .nav-link.active { color: var(--second-color); }
@@ -41,17 +41,12 @@ main.content-container { max-width: 1200px; margin: 2rem auto; padding: 2rem; ba
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* Genel Sayfa Başlığı */
-.sayfa-basligi {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-}
+.sayfa-basligi { text-align: center; margin-bottom: 3rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); }
 .sayfa-basligi h1 { margin-bottom: 0.5rem; }
 .sayfa-basligi p { font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto; }
 
 /* Genel Buton Stili */
-.buton { display: inline-block; background-color: var(--second-color); color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; transition: background-color 0.3s; border: none; cursor: pointer; margin-top: 1rem; text-align: center; }
+.buton { display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--second-color); color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; transition: background-color 0.3s; border: none; cursor: pointer; margin-top: 1rem; text-align: center; }
 .buton:hover { background-color: #d1561a; }
 
 /* Footer */
@@ -109,7 +104,7 @@ footer.main-footer { text-align: center; padding: 2rem; background-color: var(--
 .misyon-vizyon-karti h2 { margin-top: 0; color: var(--first-color); }
 @media (max-width: 768px) { .misyon-vizyon-grid { grid-template-columns: 1fr; } }
 
-/* ÜYE KAYIT (YENİ EKLENDİ) */
+/* ÜYE KAYIT */
 .uye-kayit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
 .uye-kayit-karti { display: block; text-decoration: none; color: var(--text-color); background-color: #fff; padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
 .uye-kayit-karti:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
@@ -117,12 +112,16 @@ footer.main-footer { text-align: center; padding: 2rem; background-color: var(--
 .uye-kayit-karti h3 { margin-bottom: 0.5rem; }
 .uye-kayit-karti p { color: #666; font-size: 0.95rem; }
 
-/* DİĞER... */
+/* İLETİŞİM (YENİ EKLENDİ) */
 .iletisim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
-.yonetici-karti { text-align: center; padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px; }
-.yonetici-karti img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--third-color); }
-.yonetici-karti .unvan { color: #666; font-style: italic; }
-.toplu-mail { text-align: center; }
+.yonetici-karti { text-align: center; padding: 2.5rem 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; transition: transform 0.3s, box-shadow 0.3s; }
+.yonetici-karti:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+.yonetici-karti img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; border: 4px solid var(--third-color); }
+.yonetici-karti .unvan { color: #666; font-style: italic; margin-top: 0.2rem; }
+.toplu-mail { text-align: center; background-color: var(--light-gray); padding: 2rem; border-radius: 12px; }
+.toplu-mail p { margin-top: 0; }
+
+/* ADMIN */
 .form-grup { margin-bottom: 1.5rem; }
 .form-grup label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
 .form-grup input, .form-grup textarea { width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 5px; font-size: 1rem; box-sizing: border-box; }
